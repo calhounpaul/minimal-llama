@@ -124,7 +124,7 @@ def main():
     if os.path.exists(latest_path):
         start = read_json(latest_path)["latest_step"]
         model.load_state_dict(
-            torch.load(os.path.join(os.path.join(args.save_dir, f"model-{start + 1:06d}.p"))), strict=False)
+            torch.load(os.path.join(os.path.join(args.save_dir, f"params-{start + 1:06d}.p"))), strict=False)
         opt.load_state_dict(
             torch.load(os.path.join(os.path.join(args.save_dir, f"opt-{start + 1:06d}.p"))))
     else:
