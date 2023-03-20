@@ -94,12 +94,15 @@ def data_collator(features: list) -> dict:
 
 
 def save_tunable_parameters(model, path):
-    saved_params = {
-        k: v.to("cpu")
-        for k, v in model.named_parameters()
-        if v.requires_grad
-    }
-    torch.save(saved_params, path)
+    if type(model)==dict:
+        torch.save(model, path)
+    else:
+        saved_params = {
+            k: v.to("cpu")
+            for k, v in model.named_parameters()
+            if v.requires_grad
+        }
+        torch.save(saved_params, path)
 
 
 def main():
